@@ -1,11 +1,11 @@
 package dev.bozlak.core.repository.hibernate;
 
-import dev.bozlak.core.entity.EntityOrDto;
+import dev.bozlak.core.entity.Entity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-public class EntityRepositoryBase<TEntity extends EntityOrDto> implements EntityRepository<TEntity>{
+public class EntityRepositoryBase<TEntity extends Entity> implements EntityRepository<TEntity>{
 
     private final SessionFactory sessionFactory;
 

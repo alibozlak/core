@@ -1,8 +1,8 @@
 package dev.bozlak.core.repository.hibernate;
 
-import dev.bozlak.core.entity.EntityOrDto;
+import dev.bozlak.core.entity.Entity;
 
-public interface EntityRepository<TEntity extends EntityOrDto> {
+public interface EntityRepository<TEntity extends Entity> {
 
     boolean save(TEntity entity);
 }
