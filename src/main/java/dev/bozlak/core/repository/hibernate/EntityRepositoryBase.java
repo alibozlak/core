@@ -4,16 +4,20 @@ import dev.bozlak.core.entity.EntityOrDto;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 
 public class EntityRepositoryBase<TEntity extends EntityOrDto> implements EntityRepository<TEntity>{
+
+    private final SessionFactory sessionFactory;
+
+    public EntityRepositoryBase(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     @Override
     public boolean save(TEntity entity) {
         boolean result = false;
 
-        try (SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-             Session session = sessionFactory.openSession();){
+        try (Session session = sessionFactory.openSession()){
             Transaction transaction = session.beginTransaction();
             session.persist(entity);
             transaction.commit();
